@@ -4,7 +4,7 @@ Sample application of using SignalR with WPF
 Based off of: http://www.asp.net/signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
 
 Very basic hub hosted in asp.net
-```
+```C#
     public class MyHub : Hub
     {
         public MyHub()
@@ -20,7 +20,7 @@ Very basic hub hosted in asp.net
 
 Very basic html client for sending an receiving hub messages (see link above)
 
-```
+```JavaScript
     $(function () {
         // Reference the auto-generated proxy for the hub.
         var chat = $.connection.myHub;
@@ -54,7 +54,7 @@ Very basic html client for sending an receiving hub messages (see link above)
 
 Receive messages in WPF
 
-```
+```C#
 HubConnection connection = new HubConnection("http://localhost:51255/signalr");
 proxy = connection.CreateHubProxy("MyHub");
 proxy.On<string, string>("addNewMessage", (name, message) =>
@@ -66,6 +66,6 @@ await connection.Start();
 
 Send messages in WPF
 
-```
+```C#
 await proxy.Invoke("Send", "wpf", "hello");   
 ```
