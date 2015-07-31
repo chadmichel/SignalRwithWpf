@@ -37,6 +37,11 @@ namespace WpfClient
             proxy.On<string, string>("addNewMessage", (name, message) =>
                 {
                     Console.WriteLine(message);
+
+                    Application.Current.Dispatcher.Invoke(new Action(() =>
+                        {
+                            Results.Text = Results.Text + "\r\n" + name + " : " + message;
+                        }));
                 });
             await connection.Start();            
         }
@@ -48,7 +53,7 @@ namespace WpfClient
 
         private async void SendMessage()
         {
-            await proxy.Invoke("Send", "wpf", "hello");   
+            await proxy.Invoke("Send", UserName.Text, Message.Text);   
         }
     }
 }

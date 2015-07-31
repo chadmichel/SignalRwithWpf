@@ -8,6 +8,9 @@ using Microsoft.Owin;
 
 namespace PushSystem
 {
+    /// <summary>
+    /// Very basic SignalR server hub
+    /// </summary>
     public class MyHub : Hub
     {
         public MyHub()
