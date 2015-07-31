@@ -1,9 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushSystem", "PushSystem\PushSystem.csproj", "{15FB9EC7-A2B1-4BDB-96C0-4A155504BFDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfClient", "WpfClient\WpfClient.csproj", "{B94FD570-2833-46AD-A74E-EC5802B0E50A}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15FB9EC7-A2B1-4BDB-96C0-4A155504BFDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15FB9EC7-A2B1-4BDB-96C0-4A155504BFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15FB9EC7-A2B1-4BDB-96C0-4A155504BFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15FB9EC7-A2B1-4BDB-96C0-4A155504BFDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B94FD570-2833-46AD-A74E-EC5802B0E50A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B94FD570-2833-46AD-A74E-EC5802B0E50A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B94FD570-2833-46AD-A74E-EC5802B0E50A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B94FD570-2833-46AD-A74E-EC5802B0E50A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
