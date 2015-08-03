@@ -23,6 +23,8 @@ namespace WpfClient
     {
         HubConnection connection = new HubConnection("http://localhost:51255/signalr");
         IHubProxy proxy;
+        string username;
+        string group = "wpf";
 
         public MainWindow()
         {
@@ -43,7 +45,8 @@ namespace WpfClient
                             Results.Text = Results.Text + "\r\n" + name + " : " + message;
                         }));
                 });
-            await connection.Start();            
+            Console.WriteLine(connection.ConnectionId);
+            await connection.Start();   
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -53,7 +56,15 @@ namespace WpfClient
 
         private async void SendMessage()
         {
-            await proxy.Invoke("Send", UserName.Text, Message.Text);   
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                username = UserName.Text;
+                UserName.IsEnabled = false;
+
+                await proxy.Invoke("Register", username, group);
+            }
+
+            await proxy.Invoke("Send", username, SendTo.Text, Message.Text);   
         }
     }
 }

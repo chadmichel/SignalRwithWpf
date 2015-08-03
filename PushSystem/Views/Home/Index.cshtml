@@ -3,9 +3,16 @@
 </div>
 
 <div class="container">
-    <input type="text" id="message" />
-    <input type="button" id="sendmessage" value="Send" />
-    <input type="hidden" id="displayname" />
+    <div>
+        <label>Send To: </label>
+        <input type="text" id="sendto" value="All" />
+    </div>
+    <div>
+        <label>Message: </label>
+        <input type="text" id="message" />
+        <input type="button" id="sendmessage" value="Send" />
+        <input type="hidden" id="displayname" />
+    </div>
     <ul id="discussion"></ul>
 </div>
 
@@ -18,6 +25,7 @@
     <script src="~/signalr/hubs"></script>
     <!--SignalR script to update the chat page and send messages.-->
     <script>
+        var registered = false;
         $(function () {
             // Reference the auto-generated proxy for the hub.
             var chat = $.connection.myHub;
@@ -28,16 +36,27 @@
                     + '</strong>: ' + htmlEncode(message) + '</li>');
             };
             // Get the user name and store it to prepend to messages.
-            $('#displayname').val(prompt('Enter your name:', ''));
+            $('#displayname').val(prompt('Enter your name:', 'web user'));
             // Set initial focus to message input box.
             $('#message').focus();
             // Start the connection.
             $.connection.hub.start().done(function () {
+
                 $('#sendmessage').click(function () {
-                    // Call the Send method on the hub.
-                    chat.server.send($('#displayname').val(), $('#message').val());
-                    // Clear text box and reset focus for next comment.
-                    $('#message').val('').focus();
+
+                    if (registered) {
+                        // Call the Send method on the hub.
+                        chat.server.sendAndRegister($('#displayname').val(), "web", ($('#sendto').val()), $('#message').val());
+                        // Clear text box and reset focus for next comment.
+                        $('#message').val('').focus();
+                    } else {
+                        registered = true;
+
+                        // Call the Send method on the hub.
+                        chat.server.send($('#displayname').val(), ($('#sendto').val()), $('#message').val());
+                        // Clear text box and reset focus for next comment.
+                        $('#message').val('').focus();
+                    }
                 });
             });
         });

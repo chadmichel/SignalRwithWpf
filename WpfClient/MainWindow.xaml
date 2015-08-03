@@ -10,7 +10,8 @@
         
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>            
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -22,10 +23,21 @@
             </Grid.ColumnDefinitions>
             
             <Label VerticalAlignment="Center" Grid.Column="0">User</Label>            
-            <TextBox Name="UserName"  Grid.Column="1"></TextBox>
+            <TextBox Name="UserName"  Grid.Column="1">WPF User</TextBox>
         </Grid>
 
         <Grid Grid.Column="0" Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label VerticalAlignment="Center" Grid.Column="0">Send To</Label>
+            <TextBox Name="SendTo"  Grid.Column="1">All</TextBox>
+        </Grid>
+
+        <Grid Grid.Column="0" Grid.Row="2">
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"></ColumnDefinition>
@@ -38,7 +50,7 @@
             <Button Click="Button_Click"  Grid.Column="2">Send</Button>
         </Grid>
 
-        <TextBlock Name="Results" Grid.Row="2" Grid.Column="0"></TextBlock>
+        <TextBlock Name="Results" Grid.Row="3" Grid.Column="0"></TextBlock>
         
     </Grid>
 </Window>
